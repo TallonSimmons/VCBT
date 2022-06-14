@@ -17,7 +17,7 @@ namespace VacoBuiltCodeTest.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var blogPosts = await mediator.Send(new GetBlogPostsGroupedByCategory.Request());
+            var blogPosts = await mediator.Send(new GetBlogPostsOrderedByTimestamp.Request());
 
             if(blogPosts == null || !blogPosts.Any())
             {

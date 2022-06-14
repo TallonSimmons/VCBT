@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using VacoBuiltCodeTest.Application.Services.Requests;
+using VacoBuiltCodeTest.Application.Services.Queries;
 using VacoBuiltCodeTest.Core.Contracts;
 using VacoBuiltCodeTest.Core.DataModels;
 using VacoBuiltCodeTest.Infrastructure;
@@ -33,7 +33,7 @@ namespace VacoBuiltCodeTest.CompositionRoot
 
         private static IServiceCollection AddMediator(this IServiceCollection services)
         {
-            services.AddMediatR(typeof(GetBlogPostsGroupedByCategory).Assembly);
+            services.AddMediatR(typeof(GetBlogPostsOrderedByTimestamp).Assembly);
 
             return services;
         }

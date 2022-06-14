@@ -5,7 +5,7 @@ using VacoBuiltCodeTest.Core.Entities;
 
 namespace VacoBuiltCodeTest.Application.Services.Queries
 {
-    public static class GetBlogPostsGroupedByCategory
+    public static class GetBlogPostsOrderedByTimestamp
     {
         public sealed class Request : IRequest<IEnumerable<BlogPost>>
         {
