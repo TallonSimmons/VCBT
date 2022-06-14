@@ -1,10 +1,11 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using VacoBuiltCodeTest.Application.Services.Requests;
+using VacoBuiltCodeTest.Application.Services.Commands;
+using VacoBuiltCodeTest.Application.Services.Queries;
 
 namespace VacoBuiltCodeTest.Web.Controllers
 {
-    [Route("/api/blogposts")]
+    [Route("/post")]
     public class BlogPostsController : Controller
     {
         private readonly IMediator mediator;
@@ -24,6 +25,19 @@ namespace VacoBuiltCodeTest.Web.Controllers
             } 
 
             return Ok(blogPosts);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post(CreateBlogPost.Request request)
+        {
+            var result = await mediator.Send(request);
+            IActionResult actionResult = StatusCode(500);
+
+            result.Match(
+                blogPost => actionResult = Ok(blogPost),
+                exception => actionResult = BadRequest(exception.Errors));
+
+            return actionResult;
         }
     }
 }
