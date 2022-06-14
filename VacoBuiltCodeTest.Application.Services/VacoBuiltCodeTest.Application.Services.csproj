@@ -7,16 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.0.3" />
     <PackageReference Include="MediatR" Version="10.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\VacoBuiltCodeTest.Core\VacoBuiltCodeTest.Core.csproj" />
+    <ProjectReference Include="..\VacoBuiltCodeTest.SharedKernel\VacoBuiltCodeTest.SharedKernel.csproj" />
   </ItemGroup>
 
 </Project>

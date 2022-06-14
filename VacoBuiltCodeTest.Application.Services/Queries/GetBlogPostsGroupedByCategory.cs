@@ -3,7 +3,7 @@ using VacoBuiltCodeTest.Core.Contracts;
 using VacoBuiltCodeTest.Core.DataModels;
 using VacoBuiltCodeTest.Core.Entities;
 
-namespace VacoBuiltCodeTest.Application.Services.Requests
+namespace VacoBuiltCodeTest.Application.Services.Queries
 {
     public static class GetBlogPostsGroupedByCategory
     {
