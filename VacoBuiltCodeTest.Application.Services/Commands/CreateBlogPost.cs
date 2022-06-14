@@ -37,7 +37,7 @@ namespace VacoBuiltCodeTest.Application.Services.Commands
 
                 try
                 {
-                    var result = await writeRepository.SaveAsync(new BlogPostDataModel
+                    var result = await writeRepository.CreateAsync(new BlogPostDataModel
                     {
                         Id = Guid.NewGuid(),
                         Title = request.Title,
