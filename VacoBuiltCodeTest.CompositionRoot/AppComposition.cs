@@ -21,6 +21,7 @@ namespace VacoBuiltCodeTest.CompositionRoot
         private static IServiceCollection AddRepositories(this IServiceCollection services)
         {
             services.AddScoped<IReadRepository<BlogPostDataModel>, BlogPostRepository>();
+            services.AddScoped<IWriteRepository<BlogPostDataModel>, BlogPostRepository>();
             return services;
         }
 
