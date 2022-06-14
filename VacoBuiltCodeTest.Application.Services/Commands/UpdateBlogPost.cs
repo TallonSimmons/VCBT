@@ -9,15 +9,17 @@ using VacoBuiltCodeTest.SharedKernel;
 
 namespace VacoBuiltCodeTest.Application.Services.Commands
 {
-    public static class CreateBlogPost
+    public static class UpdateBlogPost
     {
         public class Request : IRequest<Either<BlogPost, RequestValidationException>>
         {
-            [FromBody]
+            // Ideally wouldn't reference a presentation-layer assembly here (for the attribute),
+            // but for the sake of time and simplicity I'm going to use these request types 
+            // and reference the assemblies needed.
+            [FromRoute]
+            public int Id { get; set; }
             public string Title { get; set; }
-            [FromBody]
             public string Contents { get; set; }
-            [FromBody]
             public int CategoryId { get; set; }
         }
 
@@ -41,16 +43,15 @@ namespace VacoBuiltCodeTest.Application.Services.Commands
 
                 try
                 {
-                    var result = await writeRepository.CreateAsync(new BlogPostDataModel
+                    var result = await writeRepository.UpdateAsync(new BlogPostDataModel
                     {
+                        Id = request.Id,
                         Title = request.Title,
                         Contents = request.Contents,
                         Timestamp = DateTime.Now,
                         CategoryId = request.CategoryId
                     });
 
-
-                    // Implement Category updates
                     return new BlogPost(result.Id, result.Title, result.Contents, new Category(2, "General"), result.Timestamp);
                 }
                 catch (Exception e)
@@ -66,6 +67,7 @@ namespace VacoBuiltCodeTest.Application.Services.Commands
         {
             public RequestValidator()
             {
+                RuleFor(x => x.Id).NotEmpty();
                 RuleFor(x => x.Title).NotEmpty();
                 RuleFor(x => x.Contents).NotEmpty();
                 RuleFor(x => x.CategoryId).NotEmpty();

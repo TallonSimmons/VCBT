@@ -2,7 +2,7 @@
 {
     public sealed class BlogPost
     {
-        public BlogPost(Guid id, string title, string contents, Category category, DateTime timestamp)
+        public BlogPost(int id, string title, string contents, Category category, DateTime timestamp)
         {
             Id = id;
             Title = title;
@@ -11,7 +11,7 @@
             Timestamp = timestamp;
         }
 
-        public Guid Id { get; }
+        public int Id { get; }
         public string Title { get; }
         public string Contents { get; }
         public Category Category { get; }

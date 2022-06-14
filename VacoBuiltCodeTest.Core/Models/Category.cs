@@ -2,13 +2,13 @@
 {
     public sealed class Category
     {
-        public Category(Guid id, string name)
+        public Category(int id, string name)
         {
             Id = id;
             Name = name;
         }
 
-        public Guid Id { get; }
+        public int Id { get; }
         public string Name { get; }
     }
 }
