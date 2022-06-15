@@ -40,7 +40,7 @@ namespace VacoBuiltCodeTest.Web.Controllers
             return actionResult;
         }
 
-        [HttpPut("/posts/{id}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> Put([FromRoute] int id, string title, string contents, int categoryId)
         {
             // TODO: Fix this hack.
